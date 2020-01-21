@@ -1,0 +1,21 @@
+{
+  "name": "frontend-challenge",
+  "version": "1.0.0",
+  "description": "Server for Scopely's frontend challenge",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "generate": "node generator/match-generator.js > app/matches.json",
+    "clean": "rm -rf app/matches.json node_modules"
+  },
+  "keywords": [
+    "scopely",
+    "frontend"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.24.0"
+  }
+}
