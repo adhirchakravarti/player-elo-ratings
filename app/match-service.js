@@ -1,21 +1,21 @@
-const fs = require('fs')
-const moment = require('moment')
+const fs = require("fs");
+const moment = require("moment");
 
-var matches = JSON.parse(fs.readFileSync(__dirname + '/matches.json'))
+var matches = JSON.parse(fs.readFileSync(__dirname + "/matches.json"));
 
 class MatchService {
   list() {
-    return matches
+    return matches;
   }
   add(match) {
     if (!match.standings)
-      throw "The match does not contain the standings for the match!"
+      throw "The match does not contain the standings for the match!";
 
-    var now = moment().toISOString()
-    matches.updatedAt = now
-    match.createdAt = now
-    matches.list.push(match)
+    var now = moment().toISOString();
+    matches.updatedAt = now;
+    match.createdAt = now;
+    matches.list.push(match);
   }
 }
 
-module.exports = new MatchService()
+module.exports = new MatchService();
