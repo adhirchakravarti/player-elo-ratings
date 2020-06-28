@@ -1,9 +1,10 @@
 import axios from "axios";
 
-function axiosGetRequest(data) {
+function axiosGetRequest(path) {
   return axios
-    .get("http://localhost:3000/matches")
+    .get(`http://localhost:3000/${path}`)
     .then((response) => {
+      // console.log(response);
       return response.data;
     })
     .catch((error) => error);

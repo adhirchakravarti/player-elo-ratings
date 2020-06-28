@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import {
   Switch,
   Route,
@@ -6,11 +7,37 @@ import {
   useRouteMatch,
   BrowserRouter as Router,
 } from "react-router-dom";
+import { connect, useDispatch } from "react-redux";
+import { compose } from "redux";
+import { getMatches, createTableData } from "./actions";
 
 import Layout from "../Layout";
 
-export default function App() {
-  const [playerTableData, setPlayerTableData] = useState({});
+const mapStateToProps = (state) => {
+  console.log("state at App", state);
+  return {
+    matches: state.matches,
+    playerRatingData: state.playerRatingData,
+    ratingTableColumns: state.ratingTable.columns,
+    ratingTableRowData: state.ratingTable.rowData,
+  };
+};
+
+function App({
+  matches,
+  playerRatingData,
+  ratingTableColumns,
+  ratingTableRowData,
+}) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMatches());
+  }, []);
+
+  useEffect(() => {
+    dispatch(createTableData());
+  }, [playerRatingData]);
 
   return (
     <Router>
@@ -19,9 +46,29 @@ export default function App() {
           <Redirect to="/ratings" />
         </Route>
         <Route path="/ratings">
-          <Layout />
+          <Layout
+            ratingTableColumns={ratingTableColumns}
+            ratingTableRowData={ratingTableRowData}
+            playerRatingData={playerRatingData}
+          />
         </Route>
       </Switch>
     </Router>
   );
 }
+
+App.propTypes = {
+  matches: PropTypes.arrayOf(
+    PropTypes.shape({
+      createdAt: PropTypes.string,
+      standings: PropTypes.arrayOf(PropTypes.string),
+    })
+  ),
+  playerRatingData: PropTypes.object,
+  ratingTableColumns: PropTypes.array,
+  ratingTableRowData: PropTypes.array,
+};
+
+const withConnect = connect(mapStateToProps, null);
+
+export default compose(withConnect)(App);

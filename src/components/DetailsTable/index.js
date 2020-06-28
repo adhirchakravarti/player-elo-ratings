@@ -2,13 +2,18 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useRouteMatch, useHistory } from "react-router-dom";
 import MaterialTable from "material-table";
+import tableIcons from "../../utils/tableIcons";
+const { SkipPrevious } = tableIcons;
 
-export default function PlayerTable({
+const SkipPreviousIcon = () => <SkipPrevious />;
+SkipPreviousIcon.displayName = "SkipPreviousIcon";
+
+export default function DetailsTable({
+  playerName,
   tableColumns,
   tableRowData,
-  ...restProps
 }) {
-  // console.log("props at PlayerTable", tableColumns, tableRowData, restProps);
+  // console.log("props at PlayerTable", playerName, tableColumns, tableRowData);
   const { path, url } = useRouteMatch();
   // console.log("path & url =", path, url);
   const history = useHistory();
@@ -17,19 +22,18 @@ export default function PlayerTable({
   return (
     <>
       <MaterialTable
+        icons={tableIcons}
         columns={tableColumns}
         data={tableRowData}
         isLoading={tableRowData.length <= 0}
         actions={[
           {
-            icon: "pageview",
-            tooltip: "view details",
-            onClick: (event, rowData) => {
-              console.log(event, rowData);
-              const { name } = rowData;
-              const encodedName = encodeURIComponent(name);
-              console.log(`${path}/${encodedName}`);
-              history.push(`${path}/${encodedName}`);
+            icon: () => SkipPreviousIcon(),
+            tooltip: "Back to Player Ratings",
+            isFreeAction: true,
+            onClick: (event) => {
+              console.log(event, path, url, history);
+              history.push("/ratings");
             },
           },
         ]}
@@ -39,13 +43,14 @@ export default function PlayerTable({
           pageSize: 10,
           // paging: false,
         }}
-        title="Player Ratings"
+        title={playerName}
       />
     </>
   );
 }
 
-PlayerTable.propTypes = {
+DetailsTable.propTypes = {
+  playerName: PropTypes.string,
   tableColumns: PropTypes.array,
   tableRowData: PropTypes.array,
 };

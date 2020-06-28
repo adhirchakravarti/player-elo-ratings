@@ -19,8 +19,10 @@ import {
   IconButton,
   makeStyles,
 } from "@material-ui/core";
+import moment from "moment";
 import PlayerTable from "../PlayerTable";
-import PanelList from "../PanelList";
+import DetailsTable from "../DetailsTable";
+import SideDrawer from "../SideDrawer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,10 +46,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Layout() {
+export default function Layout({
+  ratingTableColumns,
+  ratingTableRowData,
+  playerRatingData,
+}) {
   const { path, url } = useRouteMatch();
   const classes = useStyles();
   console.log("path & url at Layout", path, url);
+  // console.log("props at Layout = ", ratingTableColumns, ratingTableRowData);
+  const [drawerState, setDrawerState] = React.useState({
+    left: false,
+  });
+
+  const toggleDrawer = (anchor, open) => {
+    console.log("Toggle drawer called!! ", anchor, open);
+    // if (
+    //   event.type === "keydown" &&
+    //   (event.key === "Tab" || event.key === "Shift")
+    // ) {
+    //   return;
+    // }
+
+    setDrawerState({ ...drawerState, [anchor]: open });
+  };
 
   return (
     <>
@@ -70,12 +92,17 @@ export default function Layout() {
                   color="inherit"
                   aria-label="menu"
                   className={classes.menuButton}
+                  onClick={() => toggleDrawer("left", true)}
                 >
                   <Icon>menu</Icon>
                 </IconButton>
                 <Typography variant="h6">Player Ratings</Typography>
               </Toolbar>
             </AppBar>
+            <SideDrawer
+              open={drawerState["left"]}
+              onClose={() => toggleDrawer("left", false)}
+            />
           </Grid>
           <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
             <Grid component="div" className={classes.tableContainer} container>
@@ -91,7 +118,10 @@ export default function Layout() {
                     console.log("route props at /ratings", routeProps);
                     return (
                       <Grid item xl={8} lg={8} md={10} sm={12} xs={12}>
-                        <PlayerTable {...routeProps} />
+                        <PlayerTable
+                          tableColumns={ratingTableColumns}
+                          tableRowData={ratingTableRowData}
+                        />
                       </Grid>
                     );
                   }}
@@ -100,9 +130,48 @@ export default function Layout() {
                   path="/ratings/:name"
                   render={(routeProps) => {
                     console.log("route props at /ratings/name", routeProps);
+                    const {
+                      match: {
+                        params: { name },
+                      },
+                    } = routeProps;
+                    console.log("name = ", name, playerRatingData);
+                    const player = playerRatingData[name]
+                      ? playerRatingData[name]
+                      : null;
+                    console.log("Player = ", player);
+                    const columns =
+                      player !== null
+                        ? [
+                            { field: "createdAt", title: "Matches Started" },
+                            { field: "place", title: "Place", type: "numeric" },
+                            { field: "standings", title: "Results" },
+                            { field: "points", title: "Points Won / Lost" },
+                          ]
+                        : [];
+                    const rowData =
+                      player &&
+                      player.matches.map((match) => {
+                        return {
+                          createdAt: moment(match.createdAt).format(
+                            "MM-DD-YYYY HH:mm:ss.SSS"
+                          ),
+                          place: match.place + 1,
+                          points: match.points,
+                          standings: match.standings.join(", "),
+                        };
+                      });
+                    console.log("Details columns, rowData", columns, rowData);
+
                     return (
                       <Grid item xl={8} lg={8} md={10} sm={12} xs={12}>
-                        <PanelList />
+                        {player && (
+                          <DetailsTable
+                            playerName={name}
+                            tableColumns={columns}
+                            tableRowData={rowData}
+                          />
+                        )}
                       </Grid>
                     );
                   }}
@@ -122,3 +191,9 @@ export default function Layout() {
     </>
   );
 }
+
+Layout.propTypes = {
+  ratingTableColumns: PropTypes.array,
+  ratingTableRowData: PropTypes.array,
+  playerRatingData: PropTypes.object,
+};
