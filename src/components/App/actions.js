@@ -4,6 +4,8 @@ import {
   CALCULATE_PLAYER_RATINGS,
   CALCULATE_PLAYER_RATINGS_SUCCESS,
   CREATE_RATING_TABLE_DATA,
+  START_POLLING,
+  STOP_POLLING,
 } from "./constants";
 
 export function getMatches() {
@@ -43,5 +45,20 @@ export function calculatePlayerRatingsSuccess(playerRatings) {
 export function createTableData() {
   return {
     type: CREATE_RATING_TABLE_DATA,
+  };
+}
+
+export function startPolling() {
+  return {
+    type: START_POLLING,
+  };
+}
+
+export function stopPolling(error) {
+  return {
+    type: STOP_POLLING,
+    payload: {
+      error,
+    },
   };
 }

@@ -9,7 +9,12 @@ import {
 } from "react-router-dom";
 import { connect, useDispatch } from "react-redux";
 import { compose } from "redux";
-import { getMatches, createTableData } from "./actions";
+import {
+  getMatches,
+  createTableData,
+  stopPolling,
+  startPolling,
+} from "./actions";
 
 import Layout from "../Layout";
 
@@ -17,6 +22,7 @@ const mapStateToProps = (state) => {
   console.log("state at App", state);
   return {
     matches: state.matches,
+    lastUpdate: state.lastUpdate,
     playerRatingData: state.playerRatingData,
     ratingTableColumns: state.ratingTable.columns,
     ratingTableRowData: state.ratingTable.rowData,
@@ -38,6 +44,11 @@ function App({
   useEffect(() => {
     dispatch(createTableData());
   }, [playerRatingData]);
+
+  useEffect(() => {
+    dispatch(startPolling());
+    return () => dispatch(stopPolling());
+  }, []);
 
   return (
     <Router>

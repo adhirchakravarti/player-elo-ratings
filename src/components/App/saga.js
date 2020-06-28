@@ -16,9 +16,8 @@ function* getMatches() {
     if (response.error) {
       throw response.error;
     }
-    const matchData = response;
-    yield put(getMatchesSuccess(matchData));
-    yield put(calculatePlayerRatings(matchData));
+    yield put(getMatchesSuccess(response));
+    yield put(calculatePlayerRatings(response));
   } catch (error) {
     console.warn(error);
   }
@@ -74,7 +73,7 @@ function* calculatePlayerELORatings(action) {
   yield put(calculatePlayerRatingsSuccess(playerData));
 }
 
-export default function* rootSaga() {
+export default function* appSaga() {
   yield takeLatest(GET_MATCHES, getMatches);
   yield takeLatest(CALCULATE_PLAYER_RATINGS, calculatePlayerELORatings);
 }
