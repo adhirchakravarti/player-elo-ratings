@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {
   Switch,
@@ -13,28 +13,18 @@ import {
   CssBaseline,
   Container,
   Grid,
-  AppBar,
-  Toolbar,
   Paper,
-  Tabs,
-  Tab,
-  Button,
-  Typography,
-  Icon,
-  IconButton,
   makeStyles,
 } from "@material-ui/core";
 import moment from "moment";
 
 import Header from "../Header";
-import PlayerTable from "../PlayerTable";
-import DetailsTable from "../DetailsTable";
-import SideDrawer from "../SideDrawer";
-import TabPanel from "../TabPanel";
-import LinkTab from "../LinkTab";
+import RatingsTable from "../RatingsTable";
+import PlayerMatchesTable from "../PlayerMatchesTable";
 import generateSingleMatch from "../../utils/generateSingleMatch";
 import { addNewMatch } from "../App/actions";
 import MyResponsiveLine from "../LineChart";
+import PlayerDetails from "../PlayerDetails";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,9 +84,6 @@ export default function Layout({
           <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
             <Grid component="div" className={classes.tableContainer} container>
               <Switch>
-                {/* <Route exact path="/">
-                  <Redirect to="/ratings" />
-                </Route> */}
                 <Route
                   path="/ratings"
                   exact
@@ -104,7 +91,7 @@ export default function Layout({
                     console.log("route props at /ratings", routeProps);
                     return (
                       <Grid item xl={8} lg={8} md={10} sm={12} xs={12}>
-                        <PlayerTable
+                        <RatingsTable
                           tableColumns={ratingTableColumns}
                           tableRowData={ratingTableRowData}
                           addNewMatch={handleAddNewMatch}
@@ -183,23 +170,15 @@ export default function Layout({
                       });
 
                     return (
-                      <Grid item xl={8} lg={8} md={10} sm={12} xs={12}>
-                        <Grid container spacing={2}>
-                          <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                            {pathname.includes("/ratings/") &&
-                              pathname !== "/ratings" && <TabPanel />}
-                          </Grid>
-                          <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                            {player && (
-                              <DetailsTable
-                                playerName={name}
-                                tableColumns={columns}
-                                tableRowData={rowData}
-                              />
-                            )}
-                          </Grid>
-                        </Grid>
-                      </Grid>
+                      <PlayerDetails>
+                        {player && (
+                          <PlayerMatchesTable
+                            playerName={name}
+                            tableColumns={columns}
+                            tableRowData={rowData}
+                          />
+                        )}
+                      </PlayerDetails>
                     );
                   }}
                 />
@@ -237,24 +216,16 @@ export default function Layout({
                     ];
                     console.log(chartPlayerData);
                     return (
-                      <Grid item xl={8} lg={8} md={10} sm={12} xs={12}>
-                        <Grid container spacing={2}>
-                          <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                            {pathname.includes("/ratings/") &&
-                              pathname !== "/ratings" && <TabPanel />}
-                          </Grid>
-                          <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                            <Paper
-                              className={classes.chartContainer}
-                              elevation={2}
-                            >
-                              {chartPlayerData[0].data && (
-                                <MyResponsiveLine data={chartPlayerData} />
-                              )}
-                            </Paper>
-                          </Grid>
-                        </Grid>
-                      </Grid>
+                      <PlayerDetails>
+                        {chartPlayerData[0].data && (
+                          <Paper
+                            className={classes.chartContainer}
+                            elevation={2}
+                          >
+                            <MyResponsiveLine data={chartPlayerData} />
+                          </Paper>
+                        )}
+                      </PlayerDetails>
                     );
                   }}
                 />

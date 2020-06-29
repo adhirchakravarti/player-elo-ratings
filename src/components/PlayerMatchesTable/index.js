@@ -8,7 +8,7 @@ const { SkipPrevious } = tableIcons;
 const SkipPreviousIcon = () => <SkipPrevious />;
 SkipPreviousIcon.displayName = "SkipPreviousIcon";
 
-export default function DetailsTable({
+export default function PlayerMatchesTable({
   playerName,
   tableColumns,
   tableRowData,
@@ -49,7 +49,7 @@ export default function DetailsTable({
   );
 }
 
-DetailsTable.propTypes = {
+PlayerMatchesTable.propTypes = {
   playerName: PropTypes.string,
   tableColumns: PropTypes.array,
   tableRowData: PropTypes.array,

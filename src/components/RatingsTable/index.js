@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useRouteMatch, useHistory } from "react-router-dom";
 import MaterialTable from "material-table";
 
-export default function PlayerTable({
+export default function RatingsTable({
   tableColumns,
   tableRowData,
   addNewMatch,
@@ -44,10 +44,8 @@ export default function PlayerTable({
           },
         ]}
         options={{
-          // filtering: true,
           sorting: true,
           pageSize: 10,
-          // paging: false,
         }}
         title="Player Ratings"
       />
@@ -55,7 +53,7 @@ export default function PlayerTable({
   );
 }
 
-PlayerTable.propTypes = {
+RatingsTable.propTypes = {
   tableColumns: PropTypes.array,
   tableRowData: PropTypes.array,
   addNewMatch: PropTypes.func,

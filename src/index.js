@@ -2,12 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import "./main.scss";
+import { ThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import GlobalResponsiveFont from "./globalResponsiveFontCSS";
+import theme from "./theme";
 import App from "./components/App";
 import { store } from "./components/App/store";
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <GlobalResponsiveFont />
+      <App />
+    </ThemeProvider>
   </Provider>,
   document.getElementById("appContainer")
 );
