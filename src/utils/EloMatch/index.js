@@ -75,7 +75,7 @@ export default class ELOMatch {
       this.players[i].eloPost =
         this.players[i].eloPre + this.players[i].eloChange;
     }
-    console.log("ELO players", this.players);
+    // console.log("ELO players", this.players);
   }
 
   getPlayers() {

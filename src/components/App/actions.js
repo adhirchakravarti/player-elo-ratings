@@ -6,6 +6,7 @@ import {
   CREATE_RATING_TABLE_DATA,
   START_POLLING,
   STOP_POLLING,
+  ADD_NEW_MATCH,
 } from "./constants";
 
 export function getMatches() {
@@ -15,7 +16,6 @@ export function getMatches() {
 }
 
 export function getMatchesSuccess(matchData) {
-  console.log(matchData);
   return {
     type: GET_MATCHES_SUCCESS,
     payload: {
@@ -59,6 +59,15 @@ export function stopPolling(error) {
     type: STOP_POLLING,
     payload: {
       error,
+    },
+  };
+}
+
+export function addNewMatch(match) {
+  return {
+    type: ADD_NEW_MATCH,
+    payload: {
+      match,
     },
   };
 }

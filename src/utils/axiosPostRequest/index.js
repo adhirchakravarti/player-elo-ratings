@@ -1,8 +1,8 @@
 import axios from "axios";
 
-function axiosGetRequest(path) {
+function axiosPostRequest(path, data) {
   return axios
-    .get(`http://localhost:3000${path}`)
+    .post(`http://localhost:3000${path}`, data)
     .then((response) => {
       // console.log(response);
       return response.data;
@@ -10,4 +10,4 @@ function axiosGetRequest(path) {
     .catch((error) => error);
 }
 
-export default axiosGetRequest;
+export default axiosPostRequest;

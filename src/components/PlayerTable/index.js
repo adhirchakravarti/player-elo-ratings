@@ -6,7 +6,7 @@ import MaterialTable from "material-table";
 export default function PlayerTable({
   tableColumns,
   tableRowData,
-  ...restProps
+  addNewMatch,
 }) {
   // console.log("props at PlayerTable", tableColumns, tableRowData, restProps);
   const { path, url } = useRouteMatch();
@@ -23,13 +23,23 @@ export default function PlayerTable({
         actions={[
           {
             icon: "pageview",
-            tooltip: "view details",
+            tooltip: "View Details",
             onClick: (event, rowData) => {
-              console.log(event, rowData);
+              // console.log(event, rowData);
               const { name } = rowData;
               const encodedName = encodeURIComponent(name);
               console.log(`${path}/${encodedName}`);
               history.push(`${path}/${encodedName}`);
+            },
+          },
+          {
+            icon: "add",
+            tooltip: "Add a New Random Match",
+            isFreeAction: true,
+            onClick: (event) => {
+              console.log(event, path, url, history);
+              addNewMatch();
+              // history.push("/ratings");
             },
           },
         ]}
@@ -48,4 +58,5 @@ export default function PlayerTable({
 PlayerTable.propTypes = {
   tableColumns: PropTypes.array,
   tableRowData: PropTypes.array,
+  addNewMatch: PropTypes.func,
 };

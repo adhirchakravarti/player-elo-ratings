@@ -1,6 +1,12 @@
 import { call, put, takeEvery, takeLatest, all } from "redux-saga/effects";
-import { GET_MATCHES, CALCULATE_PLAYER_RATINGS } from "./constants";
+import {
+  SERVER_PATH,
+  GET_MATCHES,
+  CALCULATE_PLAYER_RATINGS,
+  ADD_NEW_MATCH,
+} from "./constants";
 import axiosGetRequest from "../../utils/axiosGetRequest";
+import axiosPostRequest from "../../utils/axiosPostRequest";
 import {
   getMatchesSuccess,
   calculatePlayerRatings,
@@ -9,10 +15,9 @@ import {
 import ELOMatch from "../../utils/EloMatch";
 
 function* getMatches() {
-  const path = "matches";
+  const path = SERVER_PATH;
   try {
     const response = yield call(axiosGetRequest, path);
-    console.log("AXIOS response! = ", response);
     if (response.error) {
       throw response.error;
     }
@@ -24,14 +29,11 @@ function* getMatches() {
 }
 
 function* calculatePlayerELORatings(action) {
-  console.log(action);
   const {
     matchData: { list: matches },
   } = action.payload;
   const playerData = {};
-  const matchSubset = matches.slice(0, 4);
-  console.log(matchSubset);
-  matchSubset.forEach((match) => {
+  matches.forEach((match) => {
     const eloM = new ELOMatch();
     const numberOfPlayers = match.standings.length;
     for (let i = 0; i < numberOfPlayers; i++) {
@@ -56,6 +58,7 @@ function* calculatePlayerELORatings(action) {
           place: player.place,
           standings: match.standings,
           points: player.eloChange,
+          rating: player.eloPost,
         });
       } else {
         playerData[player.name].change += player.eloChange;
@@ -65,15 +68,29 @@ function* calculatePlayerELORatings(action) {
           place: player.place,
           standings: match.standings,
           points: player.eloChange,
+          rating: player.eloPost,
         });
       }
     });
   });
-  console.log(playerData);
   yield put(calculatePlayerRatingsSuccess(playerData));
+}
+
+function* submitNewMatch(action) {
+  const { match } = action.payload;
+  const path = SERVER_PATH;
+  try {
+    const response = yield call(axiosPostRequest, path, match);
+    if (response.error) {
+      throw response.error;
+    }
+  } catch (error) {
+    console.warn(error);
+  }
 }
 
 export default function* appSaga() {
   yield takeLatest(GET_MATCHES, getMatches);
   yield takeLatest(CALCULATE_PLAYER_RATINGS, calculatePlayerELORatings);
+  yield takeLatest(ADD_NEW_MATCH, submitNewMatch);
 }

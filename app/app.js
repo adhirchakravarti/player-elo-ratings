@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 app.get("/matches", (req, res) => res.send(service.list()));
 app.post("/matches", (req, res) => {
   service.add(req.body);
-  res.status(204).send({});
+  res.status(201).send({ msg: "match added!" });
 });
 
 app.listen(port, () =>

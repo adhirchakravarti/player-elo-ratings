@@ -21,7 +21,6 @@ const initialState = {
 const rootReducer = produce((draft, action) => {
   switch (action.type) {
     case GET_MATCHES_SUCCESS: {
-      console.log(action.payload);
       const {
         matchData: { list: matches, updatedAt },
       } = action.payload;
@@ -30,7 +29,6 @@ const rootReducer = produce((draft, action) => {
       break;
     }
     case CALCULATE_PLAYER_RATINGS_SUCCESS: {
-      console.log(action.payload);
       const { playerRatings } = action.payload;
       draft.playerRatingData = Object.assign({}, playerRatings);
       break;
@@ -61,7 +59,6 @@ const rootReducer = produce((draft, action) => {
           matches: playerRatingData[key].matches.length,
         };
       });
-      console.log("Columns, RowData = ", columns, rowData);
       draft.ratingTable.columns = columns;
       draft.ratingTable.rowData = rowData;
       break;

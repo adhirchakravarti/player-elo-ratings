@@ -32,7 +32,7 @@ export default function DetailsTable({
             tooltip: "Back to Player Ratings",
             isFreeAction: true,
             onClick: (event) => {
-              console.log(event, path, url, history);
+              // console.log(event, path, url, history);
               history.push("/ratings");
             },
           },

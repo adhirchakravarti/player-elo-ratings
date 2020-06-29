@@ -19,7 +19,6 @@ import {
 import Layout from "../Layout";
 
 const mapStateToProps = (state) => {
-  console.log("state at App", state);
   return {
     matches: state.matches,
     lastUpdate: state.lastUpdate,
@@ -45,10 +44,10 @@ function App({
     dispatch(createTableData());
   }, [playerRatingData]);
 
-  useEffect(() => {
-    dispatch(startPolling());
-    return () => dispatch(stopPolling());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(startPolling());
+  //   return () => dispatch(stopPolling());
+  // }, []);
 
   return (
     <Router>
