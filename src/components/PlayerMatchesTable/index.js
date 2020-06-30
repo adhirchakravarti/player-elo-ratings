@@ -13,11 +13,8 @@ export default function PlayerMatchesTable({
   tableColumns,
   tableRowData,
 }) {
-  // console.log("props at PlayerTable", playerName, tableColumns, tableRowData);
   const { path, url } = useRouteMatch();
-  // console.log("path & url =", path, url);
   const history = useHistory();
-  // console.log(history);
 
   return (
     <>
@@ -32,16 +29,13 @@ export default function PlayerMatchesTable({
             tooltip: "Back to Player Ratings",
             isFreeAction: true,
             onClick: (event) => {
-              // console.log(event, path, url, history);
               history.push("/ratings");
             },
           },
         ]}
         options={{
-          // filtering: true,
           sorting: true,
           pageSize: 10,
-          // paging: false,
         }}
         title={playerName}
       />

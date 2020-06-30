@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import {
   AppBar,
   Toolbar,
@@ -15,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Header() {
+function Header({ title }) {
   const classes = useStyles();
   const [drawerState, setDrawerState] = useState({
     left: false,
@@ -38,7 +39,7 @@ function Header() {
           >
             <Icon>menu</Icon>
           </IconButton>
-          <Typography variant="h6">Player Ratings</Typography>
+          <Typography variant="h6">{title}</Typography>
         </Toolbar>
       </AppBar>
       <SideDrawer
@@ -48,5 +49,9 @@ function Header() {
     </>
   );
 }
+
+Header.propTypes = {
+  title: PropTypes.string,
+};
 
 export default Header;

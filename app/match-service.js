@@ -19,7 +19,6 @@ class MatchService {
     matches.updatedAt = now;
     match.createdAt = now;
     matches.list.push(match);
-    console.log(matches.list[matches.list.length - 1]);
     fs.writeFileSync(
       path.join(__dirname, "matches.json"),
       JSON.stringify(matches)

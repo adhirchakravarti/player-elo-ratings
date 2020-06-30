@@ -6,7 +6,6 @@ import LinkTab from "../LinkTab";
 
 function TabPanel() {
   const { url } = useRouteMatch();
-  console.log("Match.url at TabPanel = ", url);
   const [tabValue, setTabValue] = useState(() => {
     if (url.includes("/chart")) {
       return 1;

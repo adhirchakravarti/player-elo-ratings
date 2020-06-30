@@ -1,4 +1,3 @@
-// const moment = require("moment");
 import moment from "moment";
 
 export default class MatchGenerator {
@@ -52,7 +51,6 @@ export default class MatchGenerator {
         standings: matchCharacters,
       });
     }
-    console.log(JSON.stringify(this.result, null, 4));
     return this.result;
   };
 
@@ -64,5 +62,3 @@ export default class MatchGenerator {
     };
   };
 }
-
-// module.exports = new MatchGenerator();

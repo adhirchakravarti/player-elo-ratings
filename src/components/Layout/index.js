@@ -9,13 +9,7 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {
-  CssBaseline,
-  Container,
-  Grid,
-  Paper,
-  makeStyles,
-} from "@material-ui/core";
+import { Container, Grid, Paper, makeStyles } from "@material-ui/core";
 import moment from "moment";
 
 import Header from "../Header";
@@ -27,14 +21,6 @@ import MyResponsiveLine from "../LineChart";
 import PlayerDetails from "../PlayerDetails";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    // flexGrow: 1,
-    display: "flex",
-    flex: "1 1 auto",
-    height: "100%",
-    overflowY: "auto",
-    backgroundColor: "#f2f2f2",
-  },
   tableContainer: {
     display: "flex",
     justifyContent: "center",
@@ -44,7 +30,21 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "30rem",
+    [theme.breakpoints.down("xl")]: {
+      height: "40rem",
+    },
+    [theme.breakpoints.down("lg")]: {
+      height: "45rem",
+    },
+    [theme.breakpoints.down("md")]: {
+      height: "45rem",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "50rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "50rem",
+    },
   },
 }));
 
@@ -57,8 +57,6 @@ export default function Layout({
   const { path, url, isExact } = useRouteMatch();
   const { pathname } = useLocation();
   const classes = useStyles();
-  console.log("path & url at Layout", path, url, isExact);
-  console.log("location pathname at layout = ", pathname);
 
   const handleAddNewMatch = () => {
     const newMatch = generateSingleMatch();
@@ -67,7 +65,6 @@ export default function Layout({
 
   return (
     <>
-      <CssBaseline />
       <Container maxWidth="xl">
         <Grid
           container
@@ -79,7 +76,7 @@ export default function Layout({
           spacing={5}
         >
           <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-            <Header />
+            <Header title="Scopely Player Ratings" />
           </Grid>
           <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
             <Grid component="div" className={classes.tableContainer} container>
@@ -88,7 +85,6 @@ export default function Layout({
                   path="/ratings"
                   exact
                   render={(routeProps) => {
-                    console.log("route props at /ratings", routeProps);
                     return (
                       <Grid item xl={8} lg={8} md={10} sm={12} xs={12}>
                         <RatingsTable
@@ -104,7 +100,6 @@ export default function Layout({
                   path="/ratings/:name"
                   exact
                   render={(routeProps) => {
-                    console.log("Route Props at /ratings/:name ", routeProps);
                     const {
                       match: {
                         params: { name },
@@ -116,10 +111,6 @@ export default function Layout({
                 <Route
                   path="/ratings/:name/matches"
                   render={(routeProps) => {
-                    console.log(
-                      "route props at /ratings/:name/matches",
-                      routeProps
-                    );
                     const {
                       match: {
                         params: { name },
@@ -128,7 +119,6 @@ export default function Layout({
                     const player = playerRatingData[name]
                       ? playerRatingData[name]
                       : null;
-                    console.log("Player = ", player);
                     const columns =
                       player !== null
                         ? [
@@ -136,6 +126,19 @@ export default function Layout({
                               field: "createdAt",
                               title: "Match Date / Time",
                               type: "datetime",
+                              customSort: (a, b) => {
+                                const timeA = moment(
+                                  new Date(a.createdAt)
+                                ).valueOf();
+                                const timeB = moment(
+                                  new Date(b.createdAt)
+                                ).valueOf();
+                                return timeA < timeB
+                                  ? -1
+                                  : timeA > timeB
+                                  ? 1
+                                  : 0;
+                              },
                             },
                             { field: "place", title: "Place", type: "numeric" },
                             {
@@ -185,10 +188,6 @@ export default function Layout({
                 <Route
                   path="/ratings/:name/chart"
                   render={(routeProps) => {
-                    console.log(
-                      "route props at /ratings/:name/chart",
-                      routeProps
-                    );
                     const {
                       match: {
                         params: { name },
@@ -197,7 +196,6 @@ export default function Layout({
                     const player = playerRatingData[name]
                       ? playerRatingData[name]
                       : null;
-                    console.log("Player = ", player, playerRatingData);
                     const seriesData =
                       player &&
                       player.matches.map((match) => {
@@ -214,7 +212,6 @@ export default function Layout({
                         data: seriesData,
                       },
                     ];
-                    console.log(chartPlayerData);
                     return (
                       <PlayerDetails>
                         {chartPlayerData[0].data && (

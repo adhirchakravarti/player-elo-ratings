@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import {
   Drawer,
-  Button,
   List,
   Divider,
   ListItem,
@@ -11,10 +10,9 @@ import {
   ListItemText,
 } from "@material-ui/core";
 import TableChartIcon from "@material-ui/icons/TableChart";
-import TimelineIcon from "@material-ui/icons/Timeline";
 
 function SideDrawer({ open, onClose }) {
-  const list = (anchor) => (
+  const list = () => (
     <div role="presentation" onClick={handleClose} onKeyDown={handleClose}>
       <List>
         <ListItem button key="ratings" component={Link} to="/ratings">
@@ -23,20 +21,12 @@ function SideDrawer({ open, onClose }) {
           </ListItemIcon>
           <ListItemText primary="Rating Table" />
         </ListItem>
-        <Divider />
-        <ListItem button key="charts" component={Link} to="/ratings">
-          <ListItemIcon>
-            <TimelineIcon />
-          </ListItemIcon>
-          <ListItemText primary="Charts" />
-        </ListItem>
       </List>
       <Divider />
     </div>
   );
 
   const handleClose = () => {
-    console.log("handleClose() called!!");
     onClose();
   };
 
@@ -44,7 +34,7 @@ function SideDrawer({ open, onClose }) {
     <div>
       <React.Fragment key="left">
         <Drawer anchor="left" open={open} onClose={handleClose}>
-          {list("left")}
+          {list()}
         </Drawer>
       </React.Fragment>
     </div>

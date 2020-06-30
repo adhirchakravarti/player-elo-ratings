@@ -14,20 +14,6 @@ export default class ELOMatch {
     this.players.push(player);
   }
 
-  editPlayer(name, place, elo) {
-    const findPlayerIndex = this.players.findIndex(
-      (player) => player.name === name
-    );
-    const existingPlayerELOchange = this.players[findPlayerIndex].eloChange;
-    const editedPlayer = {
-      name: name,
-      place: place,
-      eloPre: elo,
-      eloChange: existingPlayerELOchange,
-    };
-    this.players.splice(findPlayerIndex, 1, editedPlayer);
-  }
-
   getELO(name) {
     for (let i = 0; i < this.players.length; i++) {
       if (this.players[i].name === name) {
@@ -75,12 +61,9 @@ export default class ELOMatch {
       this.players[i].eloPost =
         this.players[i].eloPre + this.players[i].eloChange;
     }
-    // console.log("ELO players", this.players);
   }
 
   getPlayers() {
     return this.players;
   }
 }
-
-// exports.ELOMatch = ELOMatch;

@@ -69,7 +69,6 @@ const rootReducer = produce((draft, action) => {
       break;
     }
     case SHOW_NOTIFICATION: {
-      console.log(action.payload);
       const { notification } = action.payload;
       draft.notification = true;
       draft.notificationMessage = notification.message;
@@ -80,10 +79,6 @@ const rootReducer = produce((draft, action) => {
       draft.notification = false;
       draft.notificationMessage = "";
       draft.notificationType = "";
-      break;
-    }
-    case GET_MATCHES: {
-      console.log("Action GET_MATCHES!");
       break;
     }
   }

@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import {
   Switch,
   Route,
   Redirect,
-  useRouteMatch,
   BrowserRouter as Router,
 } from "react-router-dom";
 import { connect, useDispatch } from "react-redux";
 import { compose } from "redux";
-import { Snackbar, Button, Slide, styled } from "@material-ui/core";
 import {
   getMatches,
   createTableData,
@@ -19,43 +17,7 @@ import {
 } from "./actions";
 
 import Layout from "../Layout";
-
-const notificationColorMap = {
-  info: "#2196F3",
-  success: "#4CAF50",
-  error: "#F44336",
-  warn: "#FF9800",
-};
-
-const NotificationBar = styled(({ message, ...other }) => (
-  <Snackbar message={message.message} {...other} />
-))({
-  "& .MuiSnackbarContent-root": {
-    backgroundColor: (props) => {
-      console.log(props);
-      if (props.message.type && notificationColorMap[props.message.type]) {
-        return notificationColorMap[props.message.type];
-      }
-      return "#fff";
-    },
-    color: (props) => {
-      if (props.message.type && notificationColorMap[props.message.type]) {
-        return "#fff";
-      }
-      return "#000";
-    },
-    "& .MuiSnackbarContent-action": {
-      "& .MuiButton-label": {
-        color: (props) => {
-          if (props.message.type && notificationColorMap[props.message.type]) {
-            return "#fff";
-          }
-          return "#f50057";
-        },
-      },
-    },
-  },
-});
+import NotificationBar from "../NotificationBar";
 
 const mapStateToProps = (state) => {
   return {
@@ -71,7 +33,6 @@ const mapStateToProps = (state) => {
 };
 
 function App({
-  matches,
   playerRatingData,
   ratingTableColumns,
   ratingTableRowData,
@@ -117,25 +78,9 @@ function App({
               playerRatingData={playerRatingData}
             />
             <NotificationBar
-              open={notification}
-              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-              autoHideDuration={5000}
-              TransitionComponent={(props) => (
-                <Slide {...props} direction="right" />
-              )}
+              notification={notification}
               message={message}
-              onClose={handleSnackbarClose}
-              action={
-                <React.Fragment>
-                  <Button
-                    color="secondary"
-                    size="small"
-                    onClick={handleSnackbarClose}
-                  >
-                    Dismiss
-                  </Button>
-                </React.Fragment>
-              }
+              handleClose={handleSnackbarClose}
             />
           </>
         </Route>

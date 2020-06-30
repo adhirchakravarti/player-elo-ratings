@@ -8,11 +8,8 @@ export default function RatingsTable({
   tableRowData,
   addNewMatch,
 }) {
-  // console.log("props at PlayerTable", tableColumns, tableRowData, restProps);
   const { path, url } = useRouteMatch();
-  // console.log("path & url =", path, url);
   const history = useHistory();
-  // console.log(history);
 
   return (
     <>
@@ -25,10 +22,8 @@ export default function RatingsTable({
             icon: "pageview",
             tooltip: "View Details",
             onClick: (event, rowData) => {
-              // console.log(event, rowData);
               const { name } = rowData;
               const encodedName = encodeURIComponent(name);
-              console.log(`${path}/${encodedName}`);
               history.push(`${path}/${encodedName}`);
             },
           },
@@ -37,9 +32,7 @@ export default function RatingsTable({
             tooltip: "Add a New Random Match",
             isFreeAction: true,
             onClick: (event) => {
-              console.log(event, path, url, history);
               addNewMatch();
-              // history.push("/ratings");
             },
           },
         ]}

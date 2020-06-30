@@ -1,7 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ResponsiveLine } from "@nivo/line";
-import { makeStyles, Paper, Typography } from "@material-ui/core";
+import {
+  makeStyles,
+  Paper,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@material-ui/core";
 import moment from "moment";
 
 const useStyles = makeStyles({
@@ -42,22 +48,26 @@ const colorPicker = () => {
 };
 
 const MyResponsiveLine = ({ data }) => {
-  // console.log(data);
+  const theme = useTheme();
+  const xtraSmall = useMediaQuery(theme.breakpoints.down("xs"));
+  const small = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       {data && (
         <ResponsiveLine
           data={data}
-          margin={{ top: 40, right: 110, bottom: 70, left: 70 }}
+          margin={{
+            top: 40,
+            right: xtraSmall ? 60 : small ? 70 : 80,
+            bottom: 70,
+            left: 70,
+          }}
           xScale={{
             type: "time",
             format: "%m-%d-%Y %H:%M:%S",
             useUTC: false,
             precision: "second",
           }}
-          // xFormat={(data) => {
-          //   console.log(data);
-          // }}
           yScale={{
             type: "linear",
             min: "auto",
@@ -69,21 +79,17 @@ const MyResponsiveLine = ({ data }) => {
           axisLeft={{
             legend: "Rating",
             legendPosition: "middle",
-            legendOffset: -40,
+            legendOffset: -50,
           }}
           axisBottom={{
             format: "%b %d",
-            tickValues: 20,
             legend: "Time",
             legendPosition: "middle",
-            legendOffset: 32,
+            legendOffset: 40,
           }}
           curve="natural"
           colors={{ scheme: "category10" }}
-          // colors={colorPicker}
           pointSize={6}
-          // pointColor={{ theme: labels.text.fill }}
-          // pointColor="inherit"
           pointBorderWidth={2}
           pointBorderColor={{ from: "serieColor" }}
           pointLabel="y"
@@ -91,15 +97,14 @@ const MyResponsiveLine = ({ data }) => {
           crosshairType="cross"
           motionStiffness={120}
           useMesh={true}
-          // enableSlices={false}
           tooltip={ToolTipElement}
           legends={[
             {
-              anchor: "top-right",
+              anchor: "top",
               direction: "column",
               justify: false,
-              translateX: 80,
-              translateY: 0,
+              translateX: 0,
+              translateY: -30,
               itemsSpacing: 0,
               itemDirection: "left-to-right",
               itemWidth: 80,
