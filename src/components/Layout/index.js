@@ -16,7 +16,7 @@ import Header from "../Header";
 import RatingsTable from "../RatingsTable";
 import PlayerMatchesTable from "../PlayerMatchesTable";
 import generateSingleMatch from "../../utils/generateSingleMatch";
-import { addNewMatch } from "../App/actions";
+import { addNewMatch } from "../../containers/App/actions";
 import MyResponsiveLine from "../LineChart";
 import PlayerDetails from "../PlayerDetails";
 

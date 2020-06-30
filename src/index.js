@@ -6,8 +6,8 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import GlobalResponsiveFont from "./globalResponsiveFontCSS";
 import theme from "./theme";
-import App from "./components/App";
-import { store } from "./components/App/store";
+import App from "./containers/App";
+import { store } from "./containers/App/store";
 
 ReactDOM.render(
   <Provider store={store}>

@@ -16,8 +16,8 @@ import {
   hideNotification,
 } from "./actions";
 
-import Layout from "../Layout";
-import NotificationBar from "../NotificationBar";
+import Layout from "../../components/Layout";
+import NotificationBar from "../../components/NotificationBar";
 
 const mapStateToProps = (state) => {
   return {
