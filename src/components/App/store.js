@@ -11,6 +11,9 @@ const initialState = {
     columns: [],
     rowData: [],
   },
+  notification: false,
+  notificationType: "",
+  notificationMessage: "",
 };
 
 const sagaMiddleware = createSagaMiddleware();

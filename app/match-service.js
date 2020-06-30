@@ -8,6 +8,9 @@ class MatchService {
   list() {
     return matches;
   }
+  getTimeStamp() {
+    return matches.updatedAt;
+  }
   add(match) {
     if (!match.standings)
       throw "The match does not contain the standings for the match!";

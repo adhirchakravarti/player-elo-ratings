@@ -1,6 +1,6 @@
-import { call, put, takeEvery, takeLatest, all } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 import {
-  SERVER_PATH,
+  MATCHES_PATH,
   GET_MATCHES,
   CALCULATE_PLAYER_RATINGS,
   ADD_NEW_MATCH,
@@ -11,11 +11,12 @@ import {
   getMatchesSuccess,
   calculatePlayerRatings,
   calculatePlayerRatingsSuccess,
+  showNotification,
 } from "./actions";
 import ELOMatch from "../../utils/EloMatch";
 
 function* getMatches() {
-  const path = SERVER_PATH;
+  const path = MATCHES_PATH;
   try {
     const response = yield call(axiosGetRequest, path);
     if (response.error) {
@@ -74,11 +75,17 @@ function* calculatePlayerELORatings(action) {
     });
   });
   yield put(calculatePlayerRatingsSuccess(playerData));
+  yield put(
+    showNotification({
+      message: "Retrieved updates!",
+      type: "success",
+    })
+  );
 }
 
 function* submitNewMatch(action) {
   const { match } = action.payload;
-  const path = SERVER_PATH;
+  const path = MATCHES_PATH;
   try {
     const response = yield call(axiosPostRequest, path, match);
     if (response.error) {

@@ -7,6 +7,9 @@ import {
   START_POLLING,
   STOP_POLLING,
   ADD_NEW_MATCH,
+  GET_UPDATE_TIMESTAMP,
+  SHOW_NOTIFICATION,
+  HIDE_NOTIFICATION,
 } from "./constants";
 
 export function getMatches() {
@@ -69,5 +72,26 @@ export function addNewMatch(match) {
     payload: {
       match,
     },
+  };
+}
+
+export function getLatestTimeStamp() {
+  return {
+    type: GET_UPDATE_TIMESTAMP,
+  };
+}
+
+export function showNotification(notification) {
+  return {
+    type: SHOW_NOTIFICATION,
+    payload: {
+      notification,
+    },
+  };
+}
+
+export function hideNotification() {
+  return {
+    type: HIDE_NOTIFICATION,
   };
 }

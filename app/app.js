@@ -12,6 +12,9 @@ app.use((req, res, next) => {
 });
 
 app.get("/matches", (req, res) => res.send(service.list()));
+app.get("/lastUpdated", (req, res) =>
+  res.send({ lastUpdated: service.getTimeStamp() })
+);
 app.post("/matches", (req, res) => {
   service.add(req.body);
   res.status(201).send({ msg: "match added!" });

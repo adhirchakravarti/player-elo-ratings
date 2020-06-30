@@ -6,9 +6,11 @@ import {
   GET_MATCHES_SUCCESS,
   CALCULATE_PLAYER_RATINGS_SUCCESS,
   CREATE_RATING_TABLE_DATA,
+  SHOW_NOTIFICATION,
+  HIDE_NOTIFICATION,
 } from "./constants";
 
-const initialState = {
+export const initialState = {
   matches: [],
   lastUpdate: "",
   playerRatingData: {},
@@ -16,6 +18,9 @@ const initialState = {
     columns: [],
     rowData: [],
   },
+  notification: false,
+  notificationType: "",
+  notificationMessage: "",
 };
 
 const rootReducer = produce((draft, action) => {
@@ -61,6 +66,20 @@ const rootReducer = produce((draft, action) => {
       });
       draft.ratingTable.columns = columns;
       draft.ratingTable.rowData = rowData;
+      break;
+    }
+    case SHOW_NOTIFICATION: {
+      console.log(action.payload);
+      const { notification } = action.payload;
+      draft.notification = true;
+      draft.notificationMessage = notification.message;
+      draft.notificationType = notification.type;
+      break;
+    }
+    case HIDE_NOTIFICATION: {
+      draft.notification = false;
+      draft.notificationMessage = "";
+      draft.notificationType = "";
       break;
     }
     case GET_MATCHES: {
