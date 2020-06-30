@@ -19,68 +19,84 @@ function* getMatches() {
   const path = MATCHES_PATH;
   try {
     const response = yield call(axiosGetRequest, path);
-    if (response.error) {
-      throw response.error;
+    if (response instanceof Error) {
+      throw response;
     }
     yield put(getMatchesSuccess(response));
     yield put(calculatePlayerRatings(response));
   } catch (error) {
-    console.warn(error);
+    console.error(error);
+    yield put(
+      showNotification({
+        message: `${error.toString()}`,
+        type: "error",
+      })
+    );
   }
 }
 
 function* calculatePlayerELORatings(action) {
-  const {
-    matchData: { list: matches },
-  } = action.payload;
-  const playerData = {};
-  matches.forEach((match) => {
-    const eloM = new ELOMatch();
-    const numberOfPlayers = match.standings.length;
-    for (let i = 0; i < numberOfPlayers; i++) {
-      const player = match.standings[i];
-      const existingELOscore = playerData[player] !== undefined;
-      if (existingELOscore) {
-        eloM.addPlayer(player, i, playerData[player].postRating);
-      } else {
-        eloM.addPlayer(player, i, 1000);
+  try {
+    const {
+      matchData: { list: matches },
+    } = action.payload;
+    const playerData = {};
+    matches.forEach((match) => {
+      const eloM = new ELOMatch();
+      const numberOfPlayers = match.standings.length;
+      for (let i = 0; i < numberOfPlayers; i++) {
+        const player = match.standings[i];
+        const existingELOscore = playerData[player] !== undefined;
+        if (existingELOscore) {
+          eloM.addPlayer(player, i, playerData[player].postRating);
+        } else {
+          eloM.addPlayer(player, i, 1000);
+        }
       }
-    }
-    eloM.calculateELOs();
-    eloM.getPlayers().forEach((player) => {
-      if (!playerData[player.name]) {
-        playerData[player.name] = {};
-        playerData[player.name].preRating = player.eloPre;
-        playerData[player.name].postRating = player.eloPost;
-        playerData[player.name].change = player.eloChange;
-        playerData[player.name].matches = [];
-        playerData[player.name].matches.push({
-          createdAt: match.createdAt,
-          place: player.place,
-          standings: match.standings,
-          points: player.eloChange,
-          rating: player.eloPost,
-        });
-      } else {
-        playerData[player.name].change += player.eloChange;
-        playerData[player.name].postRating += player.eloChange;
-        playerData[player.name].matches.push({
-          createdAt: match.createdAt,
-          place: player.place,
-          standings: match.standings,
-          points: player.eloChange,
-          rating: player.eloPost,
-        });
-      }
+      eloM.calculateELOs();
+      eloM.getPlayers().forEach((player) => {
+        if (!playerData[player.name]) {
+          playerData[player.name] = {};
+          playerData[player.name].preRating = player.eloPre;
+          playerData[player.name].postRating = player.eloPost;
+          playerData[player.name].change = player.eloChange;
+          playerData[player.name].matches = [];
+          playerData[player.name].matches.push({
+            createdAt: match.createdAt,
+            place: player.place,
+            standings: match.standings,
+            points: player.eloChange,
+            rating: player.eloPost,
+          });
+        } else {
+          playerData[player.name].change += player.eloChange;
+          playerData[player.name].postRating += player.eloChange;
+          playerData[player.name].matches.push({
+            createdAt: match.createdAt,
+            place: player.place,
+            standings: match.standings,
+            points: player.eloChange,
+            rating: player.eloPost,
+          });
+        }
+      });
     });
-  });
-  yield put(calculatePlayerRatingsSuccess(playerData));
-  yield put(
-    showNotification({
-      message: "Retrieved updates!",
-      type: "success",
-    })
-  );
+    yield put(calculatePlayerRatingsSuccess(playerData));
+    yield put(
+      showNotification({
+        message: "Retrieved updates!",
+        type: "success",
+      })
+    );
+  } catch (error) {
+    console.error(error);
+    yield put(
+      showNotification({
+        message: `${error.toString()}`,
+        type: "error",
+      })
+    );
+  }
 }
 
 function* submitNewMatch(action) {
@@ -88,11 +104,23 @@ function* submitNewMatch(action) {
   const path = MATCHES_PATH;
   try {
     const response = yield call(axiosPostRequest, path, match);
-    if (response.error) {
-      throw response.error;
+    if (response instanceof Error) {
+      throw response;
     }
+    yield put(
+      showNotification({
+        message: "Generated a New Match!",
+        type: "success",
+      })
+    );
   } catch (error) {
-    console.warn(error);
+    console.error(error);
+    yield put(
+      showNotification({
+        message: `${error.toString()}`,
+        type: "error",
+      })
+    );
   }
 }
 

@@ -7,13 +7,7 @@ import {
   POLL_DELAY,
   TIMESTAMP_PATH,
 } from "./constants";
-import {
-  stopPolling,
-  getMatches,
-  calculatePlayerRatings,
-  getLatestTimeStamp,
-  showNotification,
-} from "./actions";
+import { stopPolling, getMatches, showNotification } from "./actions";
 import { selectLastUpdate } from "./selectors";
 
 function* workerPollSaga(action) {
@@ -21,8 +15,8 @@ function* workerPollSaga(action) {
     try {
       const path = TIMESTAMP_PATH;
       const response = yield call(axiosGetRequest, path);
-      if (response.error) {
-        throw response.error;
+      if (response instanceof Error) {
+        throw response;
       }
       const { lastUpdated: retrievedTimestamp } = response;
       const selectedTimeStamp = yield select(selectLastUpdate);
@@ -31,13 +25,21 @@ function* workerPollSaga(action) {
         moment(retrievedTimestamp).valueOf() >
           moment(selectedTimeStamp).valueOf()
       ) {
-        yield put(getMatches());
         yield put(
           showNotification({
-            message: "Update check - Update available!",
+            message: "Update check - Update Available, Retrieving...",
             type: "info",
           })
         );
+        yield put(getMatches());
+      } else if (selectedTimeStamp === "") {
+        yield put(
+          showNotification({
+            message: "Retrieving Matches...",
+            type: "info",
+          })
+        );
+        yield put(getMatches());
       } else {
         yield put(
           showNotification({
@@ -46,11 +48,15 @@ function* workerPollSaga(action) {
           })
         );
       }
-      // yield put(getMatchesSuccess(response));
-      // yield put(calculatePlayerRatings(response));
       yield delay(POLL_DELAY);
     } catch (error) {
       console.warn(error);
+      yield put(
+        showNotification({
+          message: `${error.toString()}`,
+          type: "error",
+        })
+      );
       yield put(stopPolling(error));
     }
   }
@@ -58,7 +64,6 @@ function* workerPollSaga(action) {
 
 export default function* watchPollSaga() {
   while (true) {
-    // const data = yield take(START_POLLING);
     yield take(START_POLLING);
     yield race([call(workerPollSaga), take(STOP_POLLING)]);
   }

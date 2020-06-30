@@ -9,7 +9,6 @@ import {
 import { connect, useDispatch } from "react-redux";
 import { compose } from "redux";
 import {
-  getMatches,
   createTableData,
   stopPolling,
   startPolling,
@@ -41,10 +40,6 @@ function App({
   notificationMessage,
 }) {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getMatches());
-  }, []);
 
   useEffect(() => {
     dispatch(createTableData());

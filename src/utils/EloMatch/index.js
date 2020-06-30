@@ -1,3 +1,4 @@
+/* source: https://github.com/FigBug/Multiplayer-ELO */
 export default class ELOMatch {
   constructor() {
     this.players = [];
