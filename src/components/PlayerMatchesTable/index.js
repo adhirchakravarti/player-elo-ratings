@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { useRouteMatch, useHistory } from "react-router-dom";
-import MaterialTable from "material-table";
+import { useHistory } from "react-router-dom";
+import DataTable from "../DataTable";
 import tableIcons from "../../utils/tableIcons";
 const { SkipPrevious } = tableIcons;
 
@@ -13,30 +13,29 @@ export default function PlayerMatchesTable({
   tableColumns,
   tableRowData,
 }) {
-  const { path, url } = useRouteMatch();
   const history = useHistory();
+
+  const handleNavBack = () => {
+    history.push("/ratings");
+  };
+
+  const actionsArray = [
+    {
+      icon: () => SkipPreviousIcon(),
+      tooltip: "Back to Player Ratings",
+      isFreeAction: true,
+      onClick: (event) => {
+        handleNavBack();
+      },
+    },
+  ];
 
   return (
     <>
-      <MaterialTable
-        icons={tableIcons}
-        columns={tableColumns}
-        data={tableRowData}
-        isLoading={tableRowData.length <= 0}
-        actions={[
-          {
-            icon: () => SkipPreviousIcon(),
-            tooltip: "Back to Player Ratings",
-            isFreeAction: true,
-            onClick: (event) => {
-              history.push("/ratings");
-            },
-          },
-        ]}
-        options={{
-          sorting: true,
-          pageSize: 10,
-        }}
+      <DataTable
+        tableColumns={tableColumns}
+        tableRowData={tableRowData}
+        actionsArray={actionsArray}
         title={playerName}
       />
     </>
