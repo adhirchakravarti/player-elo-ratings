@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Tab } from "@material-ui/core";
+import Tab from "@material-ui/core/Tab";
 import { useHistory, useRouteMatch } from "react-router-dom";
 
 function LinkTab({ link, label, ...restProps }) {

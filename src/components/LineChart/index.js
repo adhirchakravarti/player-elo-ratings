@@ -1,13 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ResponsiveLine } from "@nivo/line";
-import {
-  makeStyles,
-  Paper,
-  Typography,
-  useTheme,
-  useMediaQuery,
-} from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
+import { useTheme, makeStyles } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import moment from "moment";
 
 const useStyles = makeStyles({

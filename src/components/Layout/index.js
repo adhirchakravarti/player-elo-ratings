@@ -2,7 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { Container, Grid, Paper, makeStyles } from "@material-ui/core";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import { makeStyles } from "@material-ui/core/styles";
 import moment from "moment";
 
 import Header from "../Header";

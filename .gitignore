@@ -1,3 +1,4 @@
 node_modules
 app/matches.json
 .vscode/
+dist/

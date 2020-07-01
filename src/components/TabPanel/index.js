@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useRouteMatch } from "react-router-dom";
-import { Tabs, Paper } from "@material-ui/core";
+import Tabs from "@material-ui/core/Tabs";
+import Paper from "@material-ui/core/Paper";
 import LinkTab from "../LinkTab";
 
 function TabPanel({ tabs }) {

@@ -1,4 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
 module.exports = {
   module: {
@@ -20,6 +23,7 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
+        exclude: /node_modules/,
         use: [
           // Creates `style` nodes from JS strings
           "style-loader",
@@ -30,6 +34,9 @@ module.exports = {
         ],
       },
     ],
+  },
+  entry: {
+    index: "./src/index.js",
   },
   output: {
     publicPath: "/",
@@ -42,6 +49,32 @@ module.exports = {
       template: "./src/index.html",
       filename: "./index.html",
     }),
+    new BundleAnalyzerPlugin(),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    // [
+    //   "import",
+    //   {
+    //     libraryName: "lodash",
+    //     libraryDirectory: "",
+    //     camel2DashComponentName: false,
+    //   },
+    //   {
+    //     libraryName: "@material-ui/core",
+    //     libraryDirectory: "components",
+    //     camel2DashComponentName: false,
+    //   },
+    // ],
   ],
-  devtool: "inline-source-map",
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all",
+        },
+      },
+    },
+  },
+  devtool: "cheap-module-source-map",
 };
