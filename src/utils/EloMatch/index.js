@@ -33,7 +33,7 @@ export default class ELOMatch {
 
   calculateELOs() {
     const n = this.players.length;
-    // const k = 32 / (n - 1);
+    // const k = 32 / (n - 1); // kept K factor values as used by USCF https://en.wikipedia.org/wiki/Elo_rating_system
     const k = 32;
 
     for (let i = 0; i < n; i++) {
