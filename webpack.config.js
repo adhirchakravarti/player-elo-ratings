@@ -51,21 +51,10 @@ module.exports = {
     }),
     new BundleAnalyzerPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    // [
-    //   "import",
-    //   {
-    //     libraryName: "lodash",
-    //     libraryDirectory: "",
-    //     camel2DashComponentName: false,
-    //   },
-    //   {
-    //     libraryName: "@material-ui/core",
-    //     libraryDirectory: "components",
-    //     camel2DashComponentName: false,
-    //   },
-    // ],
   ],
   optimization: {
+    nodeEnv: "production",
+    minimize: true,
     splitChunks: {
       cacheGroups: {
         commons: {
