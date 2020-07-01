@@ -2,19 +2,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./rootSaga";
 import rootReducer from "./reducer";
-
-export const initialState = {
-  matches: [],
-  lastUpdate: "",
-  playerRatingData: {},
-  ratingTable: {
-    columns: [],
-    rowData: [],
-  },
-  notification: false,
-  notificationType: "",
-  notificationMessage: "",
-};
+import { initialState } from "./reducer";
 
 const sagaMiddleware = createSagaMiddleware();
 

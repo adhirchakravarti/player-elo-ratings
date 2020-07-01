@@ -18,18 +18,16 @@ import {
 import Layout from "../../components/Layout";
 import NotificationBar from "../../components/NotificationBar";
 
-const mapStateToProps = (state) => {
-  return {
-    matches: state.matches,
-    lastUpdate: state.lastUpdate,
-    playerRatingData: state.playerRatingData,
-    ratingTableColumns: state.ratingTable.columns,
-    ratingTableRowData: state.ratingTable.rowData,
-    notification: state.notification,
-    notificationType: state.notificationType,
-    notificationMessage: state.notificationMessage,
-  };
-};
+const mapStateToProps = (state) => ({
+  matches: state.matches,
+  lastUpdate: state.lastUpdate,
+  playerRatingData: state.playerRatingData,
+  ratingTableColumns: state.ratingTable.columns,
+  ratingTableRowData: state.ratingTable.rowData,
+  notification: state.notification,
+  notificationType: state.notificationType,
+  notificationMessage: state.notificationMessage,
+});
 
 function App({
   playerRatingData,

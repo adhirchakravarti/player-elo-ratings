@@ -10,7 +10,8 @@
     "start-client": "webpack-dev-server --port 3001 --open --mode development",
     "build": "webpack --mode production",
     "start-app": "concurrently \"npm:start-server\" \"npm:start-client\"",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint --ignore-path .gitignore"
   },
   "keywords": [
     "scopely",
@@ -55,11 +56,15 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "eslint": "^7.3.1",
+    "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-babel": "^9.0.0",
     "eslint-config-prettier": "^6.11.0",
+    "eslint-config-react-app": "^5.2.1",
     "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.5",
     "eslint-plugin-standard": "^4.0.1",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",

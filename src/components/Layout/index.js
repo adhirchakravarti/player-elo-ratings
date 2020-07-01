@@ -1,13 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  Switch,
-  Route,
-  Redirect,
-  useRouteMatch,
-  useLocation,
-  BrowserRouter as Router,
-} from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Container, Grid, Paper, makeStyles } from "@material-ui/core";
 import moment from "moment";
@@ -54,8 +47,6 @@ export default function Layout({
   playerRatingData,
 }) {
   const dispatch = useDispatch();
-  const { path, url, isExact } = useRouteMatch();
-  const { pathname } = useLocation();
   const classes = useStyles();
 
   const handleAddNewMatch = () => {
@@ -84,7 +75,7 @@ export default function Layout({
                 <Route
                   path="/ratings"
                   exact
-                  render={(routeProps) => {
+                  render={() => {
                     return (
                       <Grid item xl={8} lg={8} md={10} sm={12} xs={12}>
                         <RatingsTable

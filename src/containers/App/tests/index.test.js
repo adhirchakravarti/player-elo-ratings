@@ -1,6 +1,5 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import ShallowRenderer from "react-test-renderer/shallow";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "@material-ui/core/styles";

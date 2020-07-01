@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Tab } from "@material-ui/core";
 import { useHistory, useRouteMatch } from "react-router-dom";
 
-function LinkTab(props) {
+function LinkTab({ link, label, ...restProps }) {
   const history = useHistory();
   const match = useRouteMatch();
   const {
@@ -15,15 +15,17 @@ function LinkTab(props) {
       onClick={(event) => {
         event.preventDefault();
         const encodedName = encodeURIComponent(name);
-        history.push(`/ratings/${encodedName}/${props.href}`);
+        history.push(`/ratings/${encodedName}/${link}`);
       }}
-      {...props}
+      label={label}
+      {...restProps}
     />
   );
 }
 
 LinkTab.propTypes = {
-  href: PropTypes.string,
+  link: PropTypes.string,
+  label: PropTypes.string,
 };
 
 export default LinkTab;

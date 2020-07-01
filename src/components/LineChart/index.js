@@ -32,21 +32,6 @@ ToolTipElement.propTypes = {
   point: PropTypes.object,
 };
 
-const colorPicker = () => {
-  const colors = [
-    "red",
-    "green",
-    "blue",
-    "brown",
-    "darkslategray",
-    "indigo",
-    "lightblue",
-    "orange",
-  ];
-  const pickColor = Math.floor(Math.random() * 8);
-  return colors[pickColor];
-};
-
 const MyResponsiveLine = ({ data }) => {
   const theme = useTheme();
   const xtraSmall = useMediaQuery(theme.breakpoints.down("xs"));
@@ -131,15 +116,14 @@ const MyResponsiveLine = ({ data }) => {
 };
 
 MyResponsiveLine.propTypes = {
-  // data: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     id: PropTypes.string,
-  //     data: PropTypes.arrayOf(
-  //       PropTypes.shape({ x: PropTypes.string, y: PropTypes.number })
-  //     ),
-  //   })
-  // ),
-  data: PropTypes.array,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      data: PropTypes.arrayOf(
+        PropTypes.shape({ x: PropTypes.string, y: PropTypes.number })
+      ),
+    })
+  ),
 };
 
 export default MyResponsiveLine;

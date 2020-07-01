@@ -10,7 +10,7 @@ import {
 import { stopPolling, getMatches, showNotification } from "./actions";
 import { selectLastUpdate } from "./selectors";
 
-function* workerPollSaga(action) {
+function* workerPollSaga() {
   while (true) {
     try {
       const path = TIMESTAMP_PATH;

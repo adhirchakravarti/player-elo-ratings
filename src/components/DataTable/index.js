@@ -10,20 +10,18 @@ export default function DataTable({
   title,
 }) {
   return (
-    <>
-      <MaterialTable
-        icons={tableIcons}
-        columns={tableColumns}
-        data={tableRowData}
-        isLoading={tableRowData.length <= 0}
-        actions={actionsArray}
-        options={{
-          sorting: true,
-          pageSize: 10,
-        }}
-        title={title}
-      />
-    </>
+    <MaterialTable
+      icons={tableIcons}
+      columns={tableColumns}
+      data={tableRowData}
+      isLoading={tableRowData.length <= 0}
+      actions={actionsArray}
+      options={{
+        sorting: true,
+        pageSize: 10,
+      }}
+      title={title}
+    />
   );
 }
 

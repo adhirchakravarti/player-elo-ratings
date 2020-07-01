@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useRouteMatch } from "react-router-dom";
-import { Tabs, Tab, Paper } from "@material-ui/core";
+import { Tabs, Paper } from "@material-ui/core";
 import LinkTab from "../LinkTab";
 
-function TabPanel() {
+function TabPanel({ tabs }) {
   const { url } = useRouteMatch();
   const [tabValue, setTabValue] = useState(() => {
     if (url.includes("/chart")) {
@@ -26,11 +26,22 @@ function TabPanel() {
         textColor="primary"
         centered
       >
-        <LinkTab label="Matches" href="matches" />
-        <LinkTab label="Rating Progress" href="chart" />
+        {tabs.length > 0 &&
+          tabs.map(({ label, link }) => (
+            <LinkTab key={label} label={label} link={link} />
+          ))}
       </Tabs>
     </Paper>
   );
 }
+
+TabPanel.propTypes = {
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      link: PropTypes.string,
+      label: PropTypes.string,
+    })
+  ),
+};
 
 export default TabPanel;

@@ -24,21 +24,19 @@ export default function PlayerMatchesTable({
       icon: () => SkipPreviousIcon(),
       tooltip: "Back to Player Ratings",
       isFreeAction: true,
-      onClick: (event) => {
+      onClick: () => {
         handleNavBack();
       },
     },
   ];
 
   return (
-    <>
-      <DataTable
-        tableColumns={tableColumns}
-        tableRowData={tableRowData}
-        actionsArray={actionsArray}
-        title={playerName}
-      />
-    </>
+    <DataTable
+      tableColumns={tableColumns}
+      tableRowData={tableRowData}
+      actionsArray={actionsArray}
+      title={playerName}
+    />
   );
 }
 

@@ -2,7 +2,6 @@ import { original, produce, setAutoFreeze } from "immer";
 setAutoFreeze(false);
 
 import {
-  GET_MATCHES,
   GET_MATCHES_SUCCESS,
   CALCULATE_PLAYER_RATINGS_SUCCESS,
   CREATE_RATING_TABLE_DATA,
@@ -33,11 +32,13 @@ const rootReducer = produce((draft, action) => {
       draft.lastUpdate = updatedAt;
       break;
     }
+
     case CALCULATE_PLAYER_RATINGS_SUCCESS: {
       const { playerRatings } = action.payload;
       draft.playerRatingData = Object.assign({}, playerRatings);
       break;
     }
+
     case CREATE_RATING_TABLE_DATA: {
       const columns = [
         { title: "Player Name", field: "name" },
@@ -70,6 +71,7 @@ const rootReducer = produce((draft, action) => {
       draft.ratingTable.rowData = rowData;
       break;
     }
+
     case SHOW_NOTIFICATION: {
       const { notification } = action.payload;
       draft.notification = true;
@@ -77,6 +79,7 @@ const rootReducer = produce((draft, action) => {
       draft.notificationType = notification.type;
       break;
     }
+
     case HIDE_NOTIFICATION: {
       draft.notification = false;
       draft.notificationMessage = "";

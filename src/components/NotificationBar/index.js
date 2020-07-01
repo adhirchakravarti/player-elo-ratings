@@ -7,7 +7,6 @@ import {
   Slide,
   styled,
   Typography,
-  Icon,
   makeStyles,
 } from "@material-ui/core";
 import InfoIcon from "@material-ui/icons/Info";
@@ -15,7 +14,7 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import ErrorIcon from "@material-ui/icons/Error";
 import WarningIcon from "@material-ui/icons/Warning";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   snackbarMessage: {
     display: "flex",
     justifyContent: "space-between",
@@ -41,7 +40,7 @@ const notificationIconMap = {
 };
 
 const StyledNotificationBar = styled((props) => {
-  const { action, message, type, ...restProps } = props;
+  const { action, message, ...restProps } = props;
   return (
     <Snackbar {...restProps}>
       <SnackbarContent action={action} message={message} />

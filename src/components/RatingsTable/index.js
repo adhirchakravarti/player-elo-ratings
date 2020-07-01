@@ -8,7 +8,7 @@ export default function RatingsTable({
   tableRowData,
   addNewMatch,
 }) {
-  const { path, url } = useRouteMatch();
+  const { path } = useRouteMatch();
   const history = useHistory();
 
   const handleDetailedView = (rowData) => {
@@ -33,21 +33,19 @@ export default function RatingsTable({
       icon: "add",
       tooltip: "Add a New Random Match",
       isFreeAction: true,
-      onClick: (event) => {
+      onClick: () => {
         handleFreeAction();
       },
     },
   ];
 
   return (
-    <>
-      <DataTable
-        tableColumns={tableColumns}
-        tableRowData={tableRowData}
-        actionsArray={actionsArray}
-        title="Player Ratings"
-      />
-    </>
+    <DataTable
+      tableColumns={tableColumns}
+      tableRowData={tableRowData}
+      actionsArray={actionsArray}
+      title="Player Ratings"
+    />
   );
 }
 
