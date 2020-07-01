@@ -55,15 +55,17 @@ const rootReducer = produce((draft, action) => {
         },
       ];
       const { playerRatingData } = original(draft);
-      const rowData = Object.keys(playerRatingData).map((key) => {
-        return {
-          name: key,
-          startRating: playerRatingData[key].preRating,
-          endRating: playerRatingData[key].postRating,
-          change: playerRatingData[key].change,
-          matches: playerRatingData[key].matches.length,
-        };
-      });
+      const rowData = Object.keys(playerRatingData)
+        .map((key) => {
+          return {
+            name: key,
+            startRating: playerRatingData[key].preRating,
+            endRating: playerRatingData[key].postRating,
+            change: playerRatingData[key].change,
+            matches: playerRatingData[key].matches.length,
+          };
+        })
+        .filter((player) => player.matches >= 3);
       draft.ratingTable.columns = columns;
       draft.ratingTable.rowData = rowData;
       break;
