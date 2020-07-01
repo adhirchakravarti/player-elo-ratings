@@ -3,7 +3,7 @@ import createSagaMiddleware from "redux-saga";
 import rootSaga from "./rootSaga";
 import rootReducer from "./reducer";
 
-const initialState = {
+export const initialState = {
   matches: [],
   lastUpdate: "",
   playerRatingData: {},
@@ -18,14 +18,14 @@ const initialState = {
 
 const sagaMiddleware = createSagaMiddleware();
 
-export const store = createStore(
-  rootReducer,
-  initialState,
-  compose(
-    applyMiddleware(sagaMiddleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
+const composeEnhancers =
+  typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : compose;
+
+const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware));
+
+const store = createStore(rootReducer, initialState, enhancer);
 sagaMiddleware.run(rootSaga);
 
 export default store;

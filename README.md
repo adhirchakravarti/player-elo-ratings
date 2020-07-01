@@ -18,3 +18,9 @@ at src/util/MyELOAlg and another at src/utils/EloMatch, which I found here
 (https://github.com/FigBug/Multiplayer-ELO) and slightly extended. I used
 the other implementation (instead of mine) because it seemed to have more unique
 player ratings.
+
+2. I had to skip some snapshot tests because Material-ui generates classes using
+class-counters (for them be to unique) and this breaks the snapshot which was rendered
+with different class counters. Here is the link to one such issue:
+https://github.com/mui-org/material-ui/issues/9492
+ 

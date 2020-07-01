@@ -1,0 +1,899 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RatingsTable /> Should render correctly and match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+    style="position: relative;"
+  >
+    <div
+      class="MuiToolbar-root MuiToolbar-regular MTableToolbar-root-5 MuiToolbar-gutters"
+    >
+      <div
+        class="MTableToolbar-title-9"
+      >
+        <h6
+          class="MuiTypography-root MuiTypography-h6"
+          style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+        >
+          Player Ratings
+        </h6>
+      </div>
+      <div
+        class="MTableToolbar-spacer-7"
+      />
+      <div
+        class="MuiFormControl-root MuiTextField-root MTableToolbar-searchField-10"
+      >
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart MuiInputBase-adornedEnd"
+        >
+          <div
+            class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              title="Search"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              />
+            </svg>
+          </div>
+          <input
+            aria-invalid="false"
+            aria-label="Search"
+            class="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart MuiInputBase-inputAdornedEnd"
+            placeholder="Search"
+            type="text"
+            value=""
+          />
+          <div
+            class="MuiInputAdornment-root MuiInputAdornment-positionEnd"
+          >
+            <button
+              class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <span
+                  aria-hidden="true"
+                  class="material-icons MuiIcon-root MuiIcon-fontSizeSmall"
+                >
+                  clear
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MTableToolbar-actions-8"
+      >
+        <div>
+          <div>
+            <span>
+              <button
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+                tabindex="0"
+                title="Add a New Random Match"
+                type="button"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="material-icons MuiIcon-root"
+                  >
+                    add
+                  </span>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="Component-horizontalScrollContainer-12"
+      style="overflow-x: auto; position: relative;"
+    >
+      <div>
+        <div
+          style="overflow-y: auto;"
+        >
+          <div>
+            <table
+              class="MuiTable-root"
+              style="table-layout: auto;"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-paddingCheckbox"
+                    scope="col"
+                    style="width: 48px; text-align: center; box-sizing: border-box;"
+                  >
+                    <span
+                      aria-disabled="true"
+                      class="MuiButtonBase-root MuiTableSortLabel-root Mui-disabled"
+                      role="button"
+                      tabindex="-1"
+                    >
+                      Actions
+                    </span>
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignLeft"
+                    scope="col"
+                    style="box-sizing: border-box;"
+                  >
+                    <span
+                      aria-disabled="false"
+                      class="MuiButtonBase-root MuiTableSortLabel-root"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        aria-describedby="rbd-hidden-text-0-hidden-text-0"
+                        data-rbd-drag-handle-context-id="0"
+                        data-rbd-drag-handle-draggable-id="0"
+                        data-rbd-draggable-context-id="0"
+                        data-rbd-draggable-id="0"
+                        draggable="false"
+                        role="button"
+                        tabindex="0"
+                      >
+                        Player Name
+                      </div>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignRight"
+                    scope="col"
+                    style="box-sizing: border-box;"
+                  >
+                    <span
+                      aria-disabled="false"
+                      class="MuiButtonBase-root MuiTableSortLabel-root"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        aria-describedby="rbd-hidden-text-0-hidden-text-0"
+                        data-rbd-drag-handle-context-id="0"
+                        data-rbd-drag-handle-draggable-id="1"
+                        data-rbd-draggable-context-id="0"
+                        data-rbd-draggable-id="1"
+                        draggable="false"
+                        role="button"
+                        tabindex="0"
+                      >
+                        Start Rating
+                      </div>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignRight"
+                    scope="col"
+                    style="box-sizing: border-box;"
+                  >
+                    <span
+                      aria-disabled="false"
+                      class="MuiButtonBase-root MuiTableSortLabel-root"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        aria-describedby="rbd-hidden-text-0-hidden-text-0"
+                        data-rbd-drag-handle-context-id="0"
+                        data-rbd-drag-handle-draggable-id="2"
+                        data-rbd-draggable-context-id="0"
+                        data-rbd-draggable-id="2"
+                        draggable="false"
+                        role="button"
+                        tabindex="0"
+                      >
+                        End Rating
+                      </div>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignRight"
+                    scope="col"
+                    style="box-sizing: border-box;"
+                  >
+                    <span
+                      aria-disabled="false"
+                      class="MuiButtonBase-root MuiTableSortLabel-root"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        aria-describedby="rbd-hidden-text-0-hidden-text-0"
+                        data-rbd-drag-handle-context-id="0"
+                        data-rbd-drag-handle-draggable-id="3"
+                        data-rbd-draggable-context-id="0"
+                        data-rbd-draggable-id="3"
+                        draggable="false"
+                        role="button"
+                        tabindex="0"
+                      >
+                        Rating Change
+                      </div>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignRight"
+                    scope="col"
+                    style="box-sizing: border-box;"
+                  >
+                    <span
+                      aria-disabled="false"
+                      class="MuiButtonBase-root MuiTableSortLabel-root"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        aria-describedby="rbd-hidden-text-0-hidden-text-0"
+                        data-rbd-drag-handle-context-id="0"
+                        data-rbd-drag-handle-draggable-id="4"
+                        data-rbd-draggable-context-id="0"
+                        data-rbd-draggable-id="4"
+                        draggable="false"
+                        role="button"
+                        tabindex="0"
+                      >
+                        Number of Matches
+                      </div>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                  index="0"
+                  level="0"
+                  path="0"
+                  style="transition: all ease 300ms;"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                    style="width: 48px; padding: 0px 5px; box-sizing: border-box;"
+                  >
+                    <div
+                      style="display: flex;"
+                    >
+                      <button
+                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+                        tabindex="0"
+                        title="View Details"
+                        type="button"
+                      >
+                        <span
+                          class="MuiIconButton-label"
+                        >
+                          <span
+                            aria-hidden="true"
+                            class="material-icons MuiIcon-root"
+                          >
+                            pageview
+                          </span>
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root"
+                        />
+                      </button>
+                    </div>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="Villager"
+                  >
+                    Villager
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="1000"
+                  >
+                    1000
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="973"
+                  >
+                    973
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="-27"
+                  >
+                    -27
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="52"
+                  >
+                    52
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                  index="1"
+                  level="0"
+                  path="1"
+                  style="transition: all ease 300ms;"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                    style="width: 48px; padding: 0px 5px; box-sizing: border-box;"
+                  >
+                    <div
+                      style="display: flex;"
+                    >
+                      <button
+                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+                        tabindex="0"
+                        title="View Details"
+                        type="button"
+                      >
+                        <span
+                          class="MuiIconButton-label"
+                        >
+                          <span
+                            aria-hidden="true"
+                            class="material-icons MuiIcon-root"
+                          >
+                            pageview
+                          </span>
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root"
+                        />
+                      </button>
+                    </div>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="Luigi"
+                  >
+                    Luigi
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="1000"
+                  >
+                    1000
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="964"
+                  >
+                    964
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="-36"
+                  >
+                    -36
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="61"
+                  >
+                    61
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                  index="2"
+                  level="0"
+                  path="2"
+                  style="transition: all ease 300ms;"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                    style="width: 48px; padding: 0px 5px; box-sizing: border-box;"
+                  >
+                    <div
+                      style="display: flex;"
+                    >
+                      <button
+                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+                        tabindex="0"
+                        title="View Details"
+                        type="button"
+                      >
+                        <span
+                          class="MuiIconButton-label"
+                        >
+                          <span
+                            aria-hidden="true"
+                            class="material-icons MuiIcon-root"
+                          >
+                            pageview
+                          </span>
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root"
+                        />
+                      </button>
+                    </div>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="Dry bones"
+                  >
+                    Dry bones
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="1000"
+                  >
+                    1000
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="1002"
+                  >
+                    1002
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="2"
+                  >
+                    2
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="61"
+                  >
+                    61
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                  index="3"
+                  level="0"
+                  path="3"
+                  style="transition: all ease 300ms;"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                    style="width: 48px; padding: 0px 5px; box-sizing: border-box;"
+                  >
+                    <div
+                      style="display: flex;"
+                    >
+                      <button
+                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+                        tabindex="0"
+                        title="View Details"
+                        type="button"
+                      >
+                        <span
+                          class="MuiIconButton-label"
+                        >
+                          <span
+                            aria-hidden="true"
+                            class="material-icons MuiIcon-root"
+                          >
+                            pageview
+                          </span>
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root"
+                        />
+                      </button>
+                    </div>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="Baby peach"
+                  >
+                    Baby peach
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="1000"
+                  >
+                    1000
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="1003"
+                  >
+                    1003
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="3"
+                  >
+                    3
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="64"
+                  >
+                    64
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                  index="4"
+                  level="0"
+                  path="4"
+                  style="transition: all ease 300ms;"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                    style="width: 48px; padding: 0px 5px; box-sizing: border-box;"
+                  >
+                    <div
+                      style="display: flex;"
+                    >
+                      <button
+                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+                        tabindex="0"
+                        title="View Details"
+                        type="button"
+                      >
+                        <span
+                          class="MuiIconButton-label"
+                        >
+                          <span
+                            aria-hidden="true"
+                            class="material-icons MuiIcon-root"
+                          >
+                            pageview
+                          </span>
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root"
+                        />
+                      </button>
+                    </div>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="Bowser"
+                  >
+                    Bowser
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="1000"
+                  >
+                    1000
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="1026"
+                  >
+                    1026
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="26"
+                  >
+                    26
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+                    style="box-sizing: border-box; font-family: inherit; font-weight: inherit;"
+                    value="61"
+                  >
+                    61
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                  style="height: 49px;"
+                />
+                <tr
+                  class="MuiTableRow-root"
+                  style="height: 49px;"
+                />
+                <tr
+                  class="MuiTableRow-root"
+                  style="height: 49px;"
+                />
+                <tr
+                  class="MuiTableRow-root"
+                  style="height: 49px;"
+                />
+                <tr
+                  class="MuiTableRow-root"
+                  style="height: 49px;"
+                />
+                <tr
+                  class="MuiTableRow-root"
+                  style="height: 1px;"
+                />
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table
+      class="MuiTable-root"
+    >
+      <tfoot
+        class="MuiTableFooter-root"
+        style="display: grid;"
+      >
+        <tr
+          class="MuiTableRow-root MuiTableRow-footer"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-footer MuiTablePagination-root Component-paginationRoot-1"
+            colspan="3"
+            icons="[object Object]"
+            style="float: right; overflow-x: auto;"
+          >
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiTablePagination-toolbar Component-paginationToolbar-2 MuiToolbar-gutters"
+            >
+              <div
+                class="MuiTablePagination-spacer"
+              />
+              <p
+                class="MuiTypography-root MuiTablePagination-caption Component-paginationCaption-3 MuiTypography-body2 MuiTypography-colorInherit"
+                id="mui-47846"
+              >
+                Rows per page:
+              </p>
+              <div
+                class="MuiInputBase-root MuiTablePagination-input MuiTablePagination-selectRoot Component-paginationSelectRoot-4"
+              >
+                <div
+                  aria-haspopup="listbox"
+                  aria-labelledby="mui-47846 mui-65055"
+                  class="MuiSelect-root MuiSelect-select MuiTablePagination-select MuiSelect-selectMenu MuiInputBase-input"
+                  id="mui-65055"
+                  role="button"
+                  tabindex="0"
+                >
+                  <div
+                    style="padding: 0px 5px;"
+                  >
+                    10 rows 
+                  </div>
+                </div>
+                <input
+                  aria-hidden="true"
+                  class="MuiSelect-nativeInput"
+                  tabindex="-1"
+                  value="10"
+                />
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSelect-icon MuiTablePagination-selectIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              </div>
+              <p
+                class="MuiTypography-root MuiTablePagination-caption Component-paginationCaption-3 MuiTypography-body2 MuiTypography-colorInherit"
+              >
+                1-5 of 5
+              </p>
+              <div
+                class="MTablePaginationInner-root-14"
+              >
+                <span
+                  class=""
+                  title="First Page"
+                >
+                  <button
+                    class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                    disabled=""
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <span
+                      class="MuiIconButton-label"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                </span>
+                <span
+                  class=""
+                  title="Previous Page"
+                >
+                  <button
+                    class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                    disabled=""
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <span
+                      class="MuiIconButton-label"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                </span>
+                <span
+                  class="MuiTypography-root MuiTypography-caption"
+                  style="flex: 1; text-align: center; align-self: center; flex-basis: inherit;"
+                >
+                  1-5 of 5
+                </span>
+                <span
+                  class=""
+                  title="Next Page"
+                >
+                  <button
+                    class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                    disabled=""
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <span
+                      class="MuiIconButton-label"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                </span>
+                <span
+                  class=""
+                  title="Last Page"
+                >
+                  <button
+                    class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                    disabled=""
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <span
+                      class="MuiIconButton-label"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</DocumentFragment>
+`;

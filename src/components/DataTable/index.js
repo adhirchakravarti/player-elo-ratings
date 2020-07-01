@@ -9,13 +9,6 @@ export default function DataTable({
   actionsArray,
   title,
 }) {
-  console.log(
-    "Props at DataTable ",
-    actionsArray,
-    tableRowData,
-    tableColumns,
-    title
-  );
   return (
     <>
       <MaterialTable
@@ -24,26 +17,6 @@ export default function DataTable({
         data={tableRowData}
         isLoading={tableRowData.length <= 0}
         actions={actionsArray}
-        // actions={[
-        //   {
-        //     icon: "pageview",
-        //     tooltip: "View Details",
-        //     onClick: (event, rowData) => {
-        //       const { name } = rowData;
-        //       const encodedName = encodeURIComponent(name);
-        //       history.push(`${path}/${encodedName}`);
-        //     },
-        //   },
-        //   {
-        //     icon: "add",
-        //     tooltip: "Add a New Random Match",
-        //     isFreeAction: true,
-        //     onClick: (event) => {
-        //       // addNewMatch();
-        //       onFreeAction();
-        //     },
-        //   },
-        // ]}
         options={{
           sorting: true,
           pageSize: 10,
