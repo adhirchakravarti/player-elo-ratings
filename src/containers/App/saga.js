@@ -1,4 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
+import moment from "moment";
 import {
   MATCHES_PATH,
   GET_MATCHES,
@@ -107,9 +108,17 @@ function* submitNewMatch(action) {
     if (response instanceof Error) {
       throw response;
     }
+    const { createdAt, standings } = match;
+    const matchResults = standings.reduce(
+      (accum, curr, idx) =>
+        `${idx === 0 ? "" : accum + ", "}${idx + 1}) ${curr}`,
+      ""
+    );
     yield put(
       showNotification({
-        message: "Generated a New Match!",
+        message: `Generated New Match at ${moment(createdAt).format(
+          "MMM D, YYYY h:mm:ss A"
+        )} with results: ${matchResults}`,
         type: "success",
       })
     );
