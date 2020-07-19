@@ -1,7 +1,7 @@
 {
-  "name": "frontend-challenge",
+  "name": "player-ratings",
   "version": "1.0.0",
-  "description": "Server for Scopely's frontend challenge",
+  "description": "ELO rating app",
   "main": "index.js",
   "scripts": {
     "start-server": "nodemon index.js",
@@ -14,10 +14,10 @@
     "lint": "eslint --ignore-path .gitignore"
   },
   "keywords": [
-    "scopely",
+    "ELO ratings",
     "frontend"
   ],
-  "author": "",
+  "author": "Adhir Chakravarti",
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.10.3",
